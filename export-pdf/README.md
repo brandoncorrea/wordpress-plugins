@@ -1,27 +1,26 @@
-Description:
-	This plugin adds a button to the end of posts that 
-	enables users to print the document as a PDF.
+# Export PDF
+This plugin adds a button to the end of posts that enables users to print the document as a PDF.
+The same functionality is applied when the user attempts a CTRL + P printing method.
 
-	The same functionality is applied when the user attempts a
-	CTRL + P printing method.
+## Button HTML
+The button HTML can be updated in export-pdf.php > add_export_button()
 
-HTML:
-	The HTML for the Export PDF button will appear like so:
-		- <button id='export-pdf-btn' onclick='print()'>Export PDF</button>
+Current Button HTML below:
+```html
+<button id='export-pdf-btn' onclick='print()'>Export PDF</button>
+```
 
-	The button HTML can be updated in export-pdf.php > add_export_button().
+## export-pdf.css
+Contains the styles for the Export PDF Button as well as the exported page.
 
-Styling:
-	The CSS for the button can be updated in:
-		- export-pdf.css > #export-pdf-btn
-	
-	The CSS for the exported page can be updated in:
-		- export-pdf.css > @media print
+The button styling is under the ID: #export-pdf-btn
 
-Scripts:
-	Document filtering is handled in export-pdf.js > beforePrintEvent()
+The exported page styling is under the section: @media print
 
-	Filtering Rules:
-		- input tags will be replaced with the values
-		- textarea tags will be replaced with the values
-		- select tags will be replaced with the selected option's text
+## export-pdf.js
+Document filtering is handled in the beforePrintEvent() function.
+
+### Filtering Rules
+- input tags will be replaced with the values
+- textarea tags will be replaced with the values
+- select tags will be replaced with the selected option's text
