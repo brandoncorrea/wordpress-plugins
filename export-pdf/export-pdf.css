@@ -1,0 +1,16 @@
+@media print {
+	/* 
+		Hide elements unrelated to post
+	*/
+	
+	footer,
+	#masthead,
+	#comments,
+	article .entry-meta	{
+		display: none;
+	}
+}
+
+#export-pdf-btn {
+	
+}

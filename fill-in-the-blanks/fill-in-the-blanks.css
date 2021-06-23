@@ -1,0 +1,10 @@
+.fill-in-the-blanks-input {
+	/* Styles for Input Boxes */
+	font-family: 'Nexa Bold';
+	font-size: 28px;
+}
+
+.fill-in-the-blanks-text {
+	/* Styles for the Author's text */
+	background-color: yellow;
+}
