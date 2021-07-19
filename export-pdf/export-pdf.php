@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Export PDF
- * Description: Exports the post content as a PDF
+ * Description: Sends post content to the current user's email
  * Version: 1.0.0
  */
  
@@ -32,6 +32,7 @@
 	{
 		if ($content == null)
 			return $content;
-		$button = "<button id='export-pdf-btn' onclick='print()'>Export PDF</button>";
+		$email = wp_get_current_user()->user_email;
+		$button = "<button id=\"export-pdf-btn\" onclick=\"emailNotesToCurrentUser('" . $email . "')\">Email Notes</button>";
 		return $content . $button;
 	}

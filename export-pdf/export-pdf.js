@@ -1,4 +1,4 @@
-function createPdfFromHtml() {
+function emailNotesToCurrentUser(recipient) {
 	var button = document.getElementById('export-pdf-btn');
 	button.enabled = false;
 	
@@ -35,8 +35,7 @@ function createPdfFromHtml() {
 			author,
 			date,
 			content,
-			// Hard code recipient for now
-			recipient: 'bwancor@gmail.com'
+			recipient
 		})
 	})
 	.finally(() => button.enabled = true);
