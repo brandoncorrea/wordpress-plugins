@@ -7,7 +7,7 @@ Regular text will appear for the author, while textboxes will appear for non-aut
 The HTML for the author's text will appear like so:
 ```html
 <span class="fill-in-the-blanks-text">Some Text</span>
-<span class="fill-in-the-blanks-textarea>Some more text</span>
+<span class="fill-in-the-blanks-textarea">Some more text</span>
 ```
 
 The HTML for the reader's textboxes will appear like so:
