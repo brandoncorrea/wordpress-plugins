@@ -61,5 +61,5 @@
 	// Returns true if the user authored the post
 	function should_return_raw_content()
 	{
-		return get_the_author() !== wp_get_current_user()->user_login;
+		return get_the_author() === wp_get_current_user()->user_login;
 	}
