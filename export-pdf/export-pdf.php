@@ -33,6 +33,6 @@
 		if ($content == null)
 			return $content;
 		$email = wp_get_current_user()->user_email;
-		$button = "<button id=\"export-pdf-btn\" onclick=\"emailNotesToCurrentUser('" . $email . "')\">Email Notes</button>";
+		$button = "<button id=\"export-pdf-btn\" onclick=\"emailNotesToCurrentUser('" . $email . "')\"><p class=\"export-pdf-btn-title\">Save a copy of your notes!</p><p class=\"export-pdf-btn-subtitle\">CLICK HERE</p></button>";
 		return $content . $button;
 	}
