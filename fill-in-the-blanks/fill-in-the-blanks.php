@@ -37,12 +37,8 @@
 	}
 	
 	// replaces all tags with input tags: <span class="fill-in-the-blanks-text" />
-	function replace_blank_fields($content)
+	function replace_input_fields($content, $dom, $xpath)
 	{
-		// Get all Span elements with class, 'my-custom-format'
-		$dom = new DOMDocument();
-		$dom->loadHTML($content);
-		$xpath = new DomXPath($dom);
 		$elements = $xpath->query("//span[@class='fill-in-the-blanks-text']");
 		
 		// Replace each element with inputs
@@ -53,6 +49,32 @@
 			$input->setAttribute('class', 'fill-in-the-blanks-input');
 			$el->parentNode->replaceChild($input, $el);
 		}
+	}
+	
+	// replaces all tags with textarea tags: <span class="fill-in-the-blanks-textarea" />
+	function replace_textarea_fields($content, $dom, $xpath)
+	{
+		$elements = $xpath->query("//span[@class='fill-in-the-blanks-textarea']");
+		
+		// Replace each element with textareas
+		foreach ($elements as $el)
+		{
+			$textarea = $dom->createElement('textarea', '');
+			$textarea->setAttribute('class', 'fill-in-the-blanks-input');
+			$el->parentNode->replaceChild($textarea, $el);
+		}
+	}
+	
+	// replaces targeted elements with textarea or input elements
+	function replace_blank_fields($content)
+	{
+		// Get all Span elements with class, 'my-custom-format'
+		$dom = new DOMDocument();
+		$dom->loadHTML($content);
+		$xpath = new DomXPath($dom);
+		
+		replace_input_fields($content, $dom, $xpath);
+		replace_textarea_fields($content, $dom, $xpath);
 		
 		// Returns updated HTML
 		return $dom->saveHTML();

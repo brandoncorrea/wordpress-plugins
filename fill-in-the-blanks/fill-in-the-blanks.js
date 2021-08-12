@@ -1,26 +1,37 @@
 ( function ( wp ) {
-    var FillInTheBlankButton = function ( props ) {
-        return wp.element.createElement( wp.editor.RichTextToolbarButton, {
-			// Update the button icon here
-            icon: 'welcome-write-blog',
-			// Update the button text here
-            title: 'Fill in the Blank',
-            onClick: function () {
-                props.onChange(
-                    wp.richText.toggleFormat( props.value, {
-                        type: 'fill-in-the-blanks/fill-in-the-blank',
-                    } )
-                );
-            },
-			isActive: props.isActive,
-        } );
-    };
 	
-    wp.richText.registerFormatType( 'fill-in-the-blanks/fill-in-the-blank', {
-		// Also update the button text here
-        title: 'Fill in the Blank',
-        tagName: 'span',
-        className: 'fill-in-the-blanks-text',
-        edit: FillInTheBlankButton,
-    } );
+	const add_button = (icon, title, className) => {
+		var formatType = 'fill-in-the-blanks/' + className;
+		
+		var menuButton = props => 
+			wp.element.createElement(wp.editor.RichTextToolbarButton, {
+				icon,
+				title,
+				onClick: () =>
+					props.onChange(
+						wp.richText.toggleFormat( props.value, {
+							type: formatType,
+						})
+					),
+				isActive: props.isActive,
+			});
+		
+		wp.richText.registerFormatType(formatType, {
+			title,
+			tagName: 'span',
+			className,
+			edit: menuButton,
+		} );
+		
+	}
+	
+	add_button(
+		'welcome-write-blog', 
+		'Fill in the Blank', 
+		'fill-in-the-blanks-text');
+	
+	add_button(
+		'format-aside', 
+		'Blank Text Area', 
+		'fill-in-the-blanks-textarea');
 } )( window.wp );

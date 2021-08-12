@@ -4,7 +4,11 @@
 	font-size: 28px;
 }
 
+/* Styles for the Author's text */
 .fill-in-the-blanks-text {
-	/* Styles for the Author's text */
 	background-color: yellow;
+}
+
+.fill-in-the-blanks-textarea {
+	background-color: orange;
 }
