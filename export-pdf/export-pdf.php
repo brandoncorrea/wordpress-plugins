@@ -17,9 +17,6 @@
 			plugins_url('export-pdf.js', __FILE__ ),
 			array('wp-rich-text')
 		);
-		wp_enqueue_style(
-			'export-pdf-css', 
-			plugins_url('export-pdf.css', __FILE__));
 	}
 	
 	// Enqueue JS file
@@ -32,7 +29,8 @@
 	{
 		if ($content == null)
 			return $content;
-		$email = wp_get_current_user()->user_email;
-		$button = "<button id=\"export-pdf-btn\" onclick=\"emailNotesToCurrentUser('" . $email . "')\"><p class=\"export-pdf-btn-title\">Save a copy of your notes!</p><p class=\"export-pdf-btn-subtitle\">CLICK HERE</p></button>";
+		$buttonTitle = '<p class="export-pdf-btn-title">Save a copy of your notes!</p>';
+		$buttonSubtitle = '<p class="export-pdf-btn-subtitle">CLICK HERE</p>';
+		$button = '<button id="export-pdf-btn" onclick="showEmailNoteModal()">' . $buttonTitle . $buttonSubtitle . "</button>";
 		return $content . $button;
 	}
